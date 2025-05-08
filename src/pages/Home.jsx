@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { UserService } from '../api/UserService';
 import { Spinner } from '../components/Spinner/Spinner';
 import UserList from '../components/UserList/UserList';
+import FilterInput from '../components/FilterInput/FilterInput';
 
 const userService = new UserService(
   'https://jsonplaceholder.typicode.com/users',
@@ -41,11 +42,13 @@ export const Home = () => {
   }
 
   return (
-    <main className='min-h-screen p-4 md:p-8 bg-gray-50'>
-      <div>
-        <h1>User List</h1>
+    <main className='min-h-screen p-4 md:p-8'>
+      <div className='max-w-7xl mx-auto'>
+        <h1 className='text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800'>
+          User List
+        </h1>
 
-        <input type='text' value={query} onChange={handleFilter} />
+        <FilterInput value={query} onChange={handleFilter} />
 
         <UserList users={filteredUsers} />
       </div>
