@@ -2,7 +2,7 @@ import { User } from '../models/User';
 
 const USERS_API_URL = 'https://jsonplaceholder.typicode.com/users';
 
-export class UsersApiService {
+class UsersApiService {
   constructor() {
     this.usersApiUrl = USERS_API_URL;
   }

@@ -1,29 +1,17 @@
 import { useState } from 'react';
 
-import { Spinner } from '../components/Spinner/Spinner';
-import UserList from '../components/UserList/UserList';
-import FilterInput from '../components/FilterInput/FilterInput';
-import { useQuery } from '@tanstack/react-query';
-import { usersApiService } from '../api/UsersApiService ';
+import { Spinner } from '../components/Spinner';
+import { UserList } from '../components/UserList';
+import { FilterInput } from '../components/FilterInput';
+
+import { UseGetUsers } from '../hooks/UseGetUsers';
 
 export const Home = () => {
   const [query, setQuery] = useState('');
-
-  const {
-    data: users = [],
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ['users'],
-    queryFn: () => usersApiService.fetchUsers(),
-  });
-
-  const filteredUsers = usersApiService.filterUsers(users, query);
+  const { filteredUsers, isLoading, isError, error } = UseGetUsers(query);
 
   const handleFilter = (e) => {
     const value = e.target.value;
-
     setQuery(value);
   };
 
