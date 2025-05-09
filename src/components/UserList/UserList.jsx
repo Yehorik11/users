@@ -2,7 +2,11 @@ import { UserCard } from '../UserCard';
 
 const UserList = ({ users }) => {
   if (users.length === 0) {
-    return <h4>No users found</h4>;
+    return (
+      <h4 className='text-gray-800 dark:text-white text-center text-lg mt-6'>
+        No users found
+      </h4>
+    );
   }
 
   return (
