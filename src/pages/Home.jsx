@@ -1,44 +1,38 @@
-import { useEffect, useState } from 'react';
-import { UserService } from '../api/UserService';
+import { useState } from 'react';
+
 import { Spinner } from '../components/Spinner/Spinner';
 import UserList from '../components/UserList/UserList';
 import FilterInput from '../components/FilterInput/FilterInput';
-
-const userService = new UserService(
-  'https://jsonplaceholder.typicode.com/users',
-);
+import { useQuery } from '@tanstack/react-query';
+import { usersApiService } from '../api/UsersApiService ';
 
 export const Home = () => {
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [filteredUsers, setFilteredUsers] = useState([]);
   const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    userService
-      .fetchUsers()
-      .then((data) => {
-        setUsers(data);
-        setFilteredUsers(data);
-      })
-      .catch((err) => setError(err))
-      .finally(() => setIsLoading(false));
-  }, []);
+  const {
+    data: users = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ['users'],
+    queryFn: () => usersApiService.fetchUsers(),
+  });
+
+  const filteredUsers = usersApiService.filterUsers(users, query);
 
   const handleFilter = (e) => {
     const value = e.target.value;
 
     setQuery(value);
-    setFilteredUsers(userService.filterUsers(users, value));
   };
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  if (error) {
-    return <p>{error}</p>;
+  if (isError) {
+    return <p>{error.message || 'Error loading'}</p>;
   }
 
   return (

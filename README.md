@@ -1,35 +1,29 @@
 # Users App
 
-A simple React application that fetches and displays a list of users from a public API. The app shows each user as a card with details and includes filtering by user properties. Built with a focus on OOP structure and responsive design.
+A simple and clean React application that fetches and displays a list of users from a public API. Built with an object-oriented approach and powered by modern tools like React Query for efficient data fetching and caching.
 
 ## 🚀 Features
 
-- Fetches users from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users)
-- Displays users as responsive cards
-- Filter users by name (or other properties)
-- Built using object-oriented programming principles
-- Mobile-friendly layout
+- ✅ Fetches users from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users)
+- ✅ Displays users as responsive cards
+- ✅ Filter users by name (or other properties)
+- ✅ Object-Oriented architecture with `User` model and `UsersApiService`
+- ✅ React Query integration for automatic caching and loading states
+- ✅ Mobile-friendly layout
 
-## 🛠️ Technologies Used
+## 🧱 Technologies Used
 
 - React
+- React Query
 - JavaScript (ES6+)
-- HTML & CSS (Responsive Layout)
+- HTML & CSS (TailwindCSS for styling)
 - Fetch API
 
 ## 📦 Getting Started
 
-1. **Clone the repository:**
-
 ```bash
 git clone https://github.com/Yehorik11/users.git
 cd users
+pnpm install
+pnpm run dev
 ```
-
-2. **Install dependencies:**
-
-- pnpm install
-
-3. **Run project:**
-
-- pnpm run dev
