@@ -3,7 +3,7 @@ import { UserCard } from '../UserCard';
 const UserList = ({ users }) => {
   if (users.length === 0) {
     return (
-      <h4 className='text-gray-800 dark:text-white text-center text-lg mt-6'>
+      <h4 className='text-gray-800 dark:text-gray-400 text-center text-lg mt-6'>
         No users found
       </h4>
     );
