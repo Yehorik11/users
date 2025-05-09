@@ -1,12 +1,35 @@
-# React + Vite
+# Users App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React application that fetches and displays a list of users from a public API. The app shows each user as a card with details and includes filtering by user properties. Built with a focus on OOP structure and responsive design.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fetches users from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users)
+- Displays users as responsive cards
+- Filter users by name (or other properties)
+- Built using object-oriented programming principles
+- Mobile-friendly layout
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript (ES6+)
+- HTML & CSS (Responsive Layout)
+- Fetch API
+
+## 📦 Getting Started
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/Yehorik11/users.git
+cd users
+```
+
+2. **Install dependencies:**
+
+- pnpm install
+
+3. **Run project:**
+
+- pnpm run dev
