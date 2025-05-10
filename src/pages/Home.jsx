@@ -7,7 +7,7 @@ import { useGetUsers } from '../hooks/UseGetUsers';
 
 export const Home = () => {
   const [query, setQuery] = useState('');
-  // const { filteredUsers, isLoading, isError, error } = useGetUsers(query);
+  const { filteredUsers, isLoading, isError, error } = useGetUsers(query);
 
   const handleFilter = (e) => {
     const value = e.target.value;
