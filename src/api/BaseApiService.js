@@ -12,6 +12,6 @@ export class BaseApiService {
   }
 
   onError(response) {
-    toastify.error('[BaseApiService] Unable to fetch');
+    console.error('[BaseApiService] Unable to fetch', response.status);
   }
 }
