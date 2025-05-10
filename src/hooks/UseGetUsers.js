@@ -1,12 +1,8 @@
-import { useEffect, useState } from 'react';
-
 import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import { usersApiService } from '../api/UsersApiService';
 
-import { usersApiService } from '../api/UsersApiService ';
-
-export const UseGetUsers = (query) => {
-  const [filteredUsers, setFilteredUsers] = useState([]);
-
+export const useGetUsers = (query) => {
   const {
     data: users = [],
     isLoading,
@@ -14,14 +10,38 @@ export const UseGetUsers = (query) => {
     error,
   } = useQuery({
     queryKey: ['users'],
-    queryFn: () => usersApiService.fetchUsers(),
+    queryFn: () => usersApiService.getUsers(),
   });
 
-  useEffect(() => {
-    if (users.length > 0) {
-      setFilteredUsers(usersApiService.filterUsers(users, query));
-    }
-  }, [query, users]);
+  const filteredUsers = useMemo(() => {
+    if (!query?.trim()) return users;
 
-  return { filteredUsers, isLoading, isError, error };
+    return users.filter(
+      ({ id, name, username, email, phone, website, address, company }) =>
+        [
+          id?.toString(),
+          name,
+          username,
+          email,
+          phone,
+          website,
+          address?.street,
+          address?.suite,
+          address?.city,
+          address?.zipcode,
+          address?.geo?.lat,
+          address?.geo?.lng,
+          company?.name,
+          company?.catchPhrase,
+          company?.bs,
+        ].some((field) => field?.toLowerCase?.().includes(query.toLowerCase())),
+    );
+  }, [users, query]);
+
+  return {
+    filteredUsers,
+    isLoading,
+    isError,
+    error,
+  };
 };

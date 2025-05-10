@@ -4,11 +4,11 @@ import { Spinner } from '../components/Spinner';
 import { UserList } from '../components/UserList';
 import { FilterInput } from '../components/FilterInput';
 
-import { UseGetUsers } from '../hooks/UseGetUsers';
+import { useGetUsers } from '../hooks/useGetUsers';
 
 export const Home = () => {
   const [query, setQuery] = useState('');
-  const { filteredUsers, isLoading, isError, error } = UseGetUsers(query);
+  const { filteredUsers, isLoading, isError, error } = useGetUsers(query);
 
   const handleFilter = (e) => {
     const value = e.target.value;
