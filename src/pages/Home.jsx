@@ -4,7 +4,7 @@ import { Spinner } from '../components/Spinner';
 import { UserList } from '../components/UserList';
 import { FilterInput } from '../components/FilterInput';
 
-import { useGetUsers } from '../hooks/useGetUsers';
+import { useGetUsers } from '../hooks/temp';
 
 export const Home = () => {
   const [query, setQuery] = useState('');
